@@ -28,7 +28,7 @@ class Glue::Zap < Glue::BaseTask
         count = 1
         while (count != 0)
             count = get_records_to_scan( Curl.get("#{base}/JSON/pscan/view/recordsToScan/?zapapiformat=JSON&formMethod=GET"))
-            sleep(0.5)
+            puts "recordsToScan: #{count}"
         end
         # Result
         @result = Curl.get("#{base}/JSON/core/view/alerts/?baseurl=#{rootpath}").body_str
